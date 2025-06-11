@@ -1,7 +1,5 @@
-// src/components/AuthForm.jsx
 import { useState } from "react";
 import { loginUser, registerUser } from './api/services';
-
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,7 +9,6 @@ export default function AuthForm() {
     direccion: "",
     telefono: "",
     password: "",
-    rol: "", // puedes autocompletarlo o poner un select más adelante
   });
 
   const toggleForm = () => setIsLogin(!isLogin);
@@ -30,9 +27,16 @@ export default function AuthForm() {
           password: formData.password,
         });
         alert("Sesión iniciada correctamente");
-        console.log(res); // guarda token en localStorage si deseas
+        console.log(res);
       } else {
-        const res = await registerUser(formData);
+        const { nombre, correo, direccion, telefono, password } = formData;
+        const res = await registerUser({
+          nombre,
+          correo,
+          direccion,
+          telefono,
+          password,
+        });
         alert("Registro exitoso");
         console.log(res);
       }
@@ -72,14 +76,6 @@ export default function AuthForm() {
                 placeholder="Teléfono"
                 className="mb-4 w-full px-4 py-2 border rounded-lg"
                 value={formData.telefono}
-                onChange={handleChange}
-              />
-              <input
-                name="rol"
-                type="text"
-                placeholder="ID del Rol"
-                className="mb-4 w-full px-4 py-2 border rounded-lg"
-                value={formData.rol}
                 onChange={handleChange}
               />
             </>

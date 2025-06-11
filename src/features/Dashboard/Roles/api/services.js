@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_BASE_URL;
-const rolesUrl = `${API_URL}/Roles`;
+const rolesUrl = `${API_URL}/roles`;
 
 export async function getRoles() {
   const response = await axios.get(rolesUrl, { withCredentials: true });

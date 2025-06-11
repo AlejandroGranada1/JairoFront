@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_BASE_URL;
-const usersUrl = `${API_URL}/Users`;
+const usersUrl = `${API_URL}/users`;
 
 export async function getUsers() {
   const response = await axios.get(usersUrl, { withCredentials: true });

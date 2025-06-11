@@ -5,7 +5,7 @@ const API_URL = import.meta.env.VITE_BASE_URL;
 
 // Registro de usuario
 export async function registerUser(userData) {
-  const response = await axios.post(`${API_URL}/auth/register`, userData, {
+  const response = await axios.post(`${API_URL}/register`, userData, {
     withCredentials: true,
   });
   return response.data;
@@ -13,7 +13,7 @@ export async function registerUser(userData) {
 
 // Login de usuario
 export async function loginUser(credentials) {
-  const response = await axios.post(`${API_URL}/auth/login`, credentials, {
+  const response = await axios.post(`${API_URL}/login`, credentials, {
     withCredentials: true,
   });
 
